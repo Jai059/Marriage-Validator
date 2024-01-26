@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        height: 100vh;
+      }
+      div {
+        width: 300px;
+        height: 300px;
+        border: 1px solid black;
+        text-align: center;
+        padding: 30px;
+        border-radius: 10px;
+        background: rgb(142, 197, 197);
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+      }
+      input {
+        height: 35px;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+        background: cadetblue;
+      }
+      input:hover {
+        outline: 1px solid #000;
+      }
+      input::placeholder {
+        color: #333;
+        font-weight: 600;
+      }
+      button {
+        height: 30px;
+        width: 100px;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+        background: cadetblue;
+        font-weight: 600;
+        color: #333;
+        position: relative;
+        left: 90px;
+      }
+      button:hover {
+        background: whitesmoke;
+        outline: 1px solid #333;
+      }
+      @media (max-width: 360px) {
+        button {
+          left: 60px;
+        }
+      }
+      @media (max-width: 300px) {
+        button {
+          left: 40px;
+        }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h2>Marriage Validator</h2>
+      <input type="text" id="brideAge" placeholder="brideAge..." /><br /><br />
+      <input type="text" id="groomAge" placeholder="groomAge..." /><br /><br />
+      <button id="validate">Validate</button>
+    </div>
+    <script>
+      const validate = document.querySelector("#validate");
+      validate.addEventListener("click", () => {
+        const brideAge = parseInt(document.querySelector("#brideAge").value);
+        const groomAge = parseInt(document.querySelector("#groomAge").value);
+        if (brideAge >= 18 && groomAge >= 21) {
+          document.body.style.backgroundColor = "orange";
+          setTimeout(() => {
+            alert("Valid Marriage");
+          }, 200);
+        } else if (brideAge < 18 || groomAge < 21) {
+          document.body.style.backgroundColor = "red";
+          setTimeout(() => {
+            alert("Invalid Marriage");
+          }, 200);
+        } else {
+          alert("Please Enter the Age");
+        }
+      });
+    </script>
+  </body>
+</html>
